@@ -25,6 +25,9 @@ configure(subprojects.findAll()) {
     }
 
     dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
         dependencies {
             dependency "org.testcontainers:testcontainers:${testContainersVersion}"
         }
