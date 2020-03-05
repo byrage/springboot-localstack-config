@@ -1,0 +1,14 @@
+bootJar { enabled = false }
+jar { enabled = true }
+
+dependencies {
+    implementation "org.testcontainers:localstack:${testContainersVersion}"
+    testImplementation "org.testcontainers:localstack:${testContainersVersion}"
+
+    compileOnly 'com.amazonaws:aws-java-sdk-dynamodb'
+    testImplementation 'com.amazonaws:aws-java-sdk-dynamodb'
+    compileOnly "software.amazon.awssdk:dynamodb:${awsSdkV2Version}"
+    testImplementation "software.amazon.awssdk:dynamodb:${awsSdkV2Version}"
+    compileOnly "software.amazon.awssdk:sqs:${awsSdkV2Version}"
+    testImplementation "software.amazon.awssdk:sqs:${awsSdkV2Version}"
+}

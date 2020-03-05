@@ -1,0 +1,45 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+
+configure(subprojects.findAll()) {
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+    apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    group = 'com.github.byrage'
+    version = '1.0.0'
+    sourceCompatibility = '1.8'
+
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+
+    dependencyManagement {
+        dependencies {
+            dependency "org.testcontainers:testcontainers:${testContainersVersion}"
+        }
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter'
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
