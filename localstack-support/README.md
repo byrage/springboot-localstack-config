@@ -1,0 +1,2 @@
+- 로컬환경에서 LocalStack 컨테이너를 지원하는 모듈
+- 해당 디렉토리에서 `docker-compose up -d` 실행 시 `springboot-localstack` 도커 컨테이너가 실행되어 컨테이너 실행시간을 절약할 수 있음
